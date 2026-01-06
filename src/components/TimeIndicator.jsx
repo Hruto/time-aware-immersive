@@ -1,7 +1,3 @@
-export default function TimeIndicator({ time }) {
-  return (
-    <div className="time-indicator">
-      Current Mode: <strong>{time}</strong>
-    </div>
-  );
+export default function TimeIndicator({ theme }) {
+return <div className="time-indicator">Mode: {theme}</div>
 }

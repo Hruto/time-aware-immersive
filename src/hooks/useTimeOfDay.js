@@ -1,7 +1,9 @@
-export function useTimeOfDay() {
-  const hour = new Date().getHours();
+export default function useTimeTheme() {
+const hour = new Date().getHours()
 
-  if (hour >= 6 && hour < 12) return "morning";
-  if (hour >= 12 && hour < 18) return "afternoon";
-  return "night";
+
+if (hour >= 6 && hour < 12) return 'morning'
+if (hour >= 12 && hour < 18) return 'day'
+if (hour >= 18 && hour < 22) return 'evening'
+return 'night'
 }

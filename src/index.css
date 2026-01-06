@@ -1,0 +1,24 @@
+body {
+margin: 0;
+font-family: 'Inter', sans-serif;
+background: linear-gradient(120deg, #0f0f0f, #1c1c1c);
+color: white;
+}
+.hero {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.showcase {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 24px;
+padding: 80px;
+}
+.time-indicator, .fps, .dev-panel {
+position: fixed;
+top: 16px;
+right: 16px;
+}

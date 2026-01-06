@@ -1,30 +1,38 @@
-import { useEffect } from "react";
-import { useTimeOfDay } from "./hooks/useTimeOfDay";
-import { usePrefersReducedMotion } from "./hooks/usePrefersReducedMotion";
+import { motion } from 'framer-motion'
+import LuxuryCard from './components/LuxuryCard'
+import TimeIndicator from './components/TimeIndicator'
+import DevToggle from './components/DevToggle'
+import FPSMeter from './components/FPSMeter'
+import useTimeTheme from './hooks/useTimeTheme'
 
-import Hero from "./components/Hero";
-import Scene from "./components/Scene";
-import TimeIndicator from "./components/TimeIndicator";
-import DevFPS from "./components/DevFPS";
 
 export default function App() {
-  const time = useTimeOfDay();
-  const reduceMotion = usePrefersReducedMotion();
+const theme = useTimeTheme()
 
-  useEffect(() => {
-    document.documentElement.dataset.theme = time;
 
-    if (reduceMotion) {
-      document.documentElement.style.setProperty("--motion-multiplier", "0");
-    }
-  }, [time, reduceMotion]);
+return (
+<div className={`app theme-${theme}`}>
+<TimeIndicator theme={theme} />
+<DevToggle />
+<FPSMeter />
 
-  return (
-    <>
-      <TimeIndicator time={time} />
-      <Hero time={time} />
-      <Scene />
-      <DevFPS />
-    </>
-  );
+
+<motion.section
+initial={{ opacity: 0 }}
+animate={{ opacity: 1 }}
+transition={{ duration: 1.5 }}
+className="hero"
+>
+<h1>AURELION</h1>
+<p>Luxury that adapts to time</p>
+</motion.section>
+
+
+<section className="showcase">
+<LuxuryCard title="Craftsmanship" />
+<LuxuryCard title="Timeless Design" />
+<LuxuryCard title="Precision Engineering" />
+</section>
+</div>
+)
 }
